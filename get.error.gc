@@ -1,0 +1,13 @@
+attach ./gnucap-coupling.so
+
+options trace
+
+verilog
+
+from_file0 #(.filename(doesntexist)) get(1 0);
+
+spice
+
+.print tran v(1)
+.tran 0 5 trace=i
+.end

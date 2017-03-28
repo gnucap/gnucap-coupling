@@ -1,0 +1,15 @@
+attach ./gnucap-coupling.so
+
+options trace
+
+verilog
+
+to_file0 put1(1 0);
+
+spice
+
+V1 1 0 sin amplitude=1
+
+.print tran v(1)
+.tran 0 5 trace=a
+.end

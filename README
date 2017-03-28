@@ -1,0 +1,38 @@
+CONTENTS
+
+coupling component models
+
+BUILD/INSTALL
+
+type
+$ make
+or
+$ make install
+
+=== from_file/v_file device implements file controlled voltage source
+
+parameters:
+ - filename. open that file.. default: device name
+ - delay. replay stuff from file with a delay. default 0
+ - iv. initial value. default 0.
+
+notes:
+ - should probably use SPLINES from bmm_table. and do some step control
+ - a file can be a named pipe...
+ - positive initial value avoids reading during initial step. see loop.1.gc
+
+=== to_file device provides output written to a file
+
+parameters:
+ - filename. open that file to write to. default: device name
+
+notes:
+ - opening a fifo from the write end will wait for the other end.
+
+EXAMPLES
+
+see *.gc files. run with "gnucap file.gc"
+
+BUGS
+
+yes. some are properly marked "incomplete".

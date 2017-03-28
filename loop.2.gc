@@ -1,0 +1,16 @@
+attach ./gnucap-coupling.so
+
+verilog
+
+// that does not work (yet).
+// the writing end waits for the reading end.
+to_file0 #(.filename(pipe)) output(1 0);
+from_file0 #(.iv(1), .delay(.1), .filename(pipe)) input(2 0);
+
+spice
+
+V1 1 0 sin amplitude=1 frequency=10
+
+.print tran v(1) v(2)
+.tran 0 1 trace=a
+.end

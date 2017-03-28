@@ -1,0 +1,20 @@
+attach ./gnucap-coupling.so
+
+verilog
+
+from_file0 #(.iv(1), .delay(.1), .filename(pipe)) input(2 0);
+
+// read from the same pipe
+// that makes sense after
+// $ mkfifo pipe
+
+to_file0 #(.filename(pipe)) output(1 0);
+list
+
+spice
+
+V1 1 0 sin amplitude=1 frequency=10
+
+.print tran v(1) v(2)
+.tran 0 1 trace=a
+.end
